@@ -4,43 +4,44 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 4f;
-    public float portDelay = 1f;
-    public float portFactor = 5f;
-    private Vector3 moveVector = new Vector2(1, 0);
-    private Vector3 portVector = new Vector3();
-    private Vector3 worldPos = new Vector3();
-    private Vector2 mousePos = new Vector2();
-    private Vector2 playerPos = new Vector2();
-    private Vector2 deltaPos = new Vector2();
-    
+    public float moveSpeed, portDelay, portFactor;
+    private Vector2 portVector = new Vector2();
+    private Vector3 worldPos;
+    private Vector2 mousePos, playerPos, deltaPos;
+
     // Start is called before the first frame update
     void Start()
     {
-        //seconds
-        //InvokeRepeating("Teleport", portDelay, portDelay);
+        moveSpeed = 2f;
+        //seconds between teleport
+        portDelay = 1f;
+        portFactor = 5f;
+
+    InvokeRepeating("Teleport", portDelay, portDelay);
     }
 
     // Update is called once per frame
     void Update()
     {
         //basic movement
-        transform.Translate(Vector3.right * Time.deltaTime);
-/*
-        //calc portVector
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+    }
+
+    public Vector2 calcPortVector(){
         worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.Set(worldPos.x, worldPos.y);
         playerPos.Set(transform.position.x, transform.position.y);
         deltaPos = mousePos - playerPos;
         deltaPos.Normalize();
-        portVector.Set(deltaPos.x, deltaPos.y, 0f);
+        portVector.Set(deltaPos.x, deltaPos.y);
         //vector player -> circle (direction mouse)
-        portVector = portVector * portFactor;
-        */
+        return portVector;
     }
 
     void Teleport()
     {
-        transform.position = transform.position + portVector;
+        transform.Translate(calcPortVector() * portFactor);
     }
+
+    
 }
