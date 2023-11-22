@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed, portDelay, portFactor;
-    private Vector2 portVector = new Vector2();
+    public static Vector2 portVector;
     private Vector3 worldPos;
-    private Vector2 mousePos, playerPos, deltaPos;
+    public static Vector2 mousePos, playerPos, deltaPos;
 
     // Start is called before the first frame update
     void Start()
@@ -25,22 +25,27 @@ public class PlayerMovement : MonoBehaviour
     {
         //basic movement
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+
+        calcPortVector();
     }
 
-    public Vector2 calcPortVector(){
+    public void calcPortVector(){
         worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.Set(worldPos.x, worldPos.y);
         playerPos.Set(transform.position.x, transform.position.y);
         deltaPos = mousePos - playerPos;
         deltaPos.Normalize();
         portVector.Set(deltaPos.x, deltaPos.y);
+        portVector = portVector * portFactor;
         //vector player -> circle (direction mouse)
-        return portVector;
+        //return portVector;
     }
 
     void Teleport()
     {
-        transform.Translate(calcPortVector() * portFactor);
+        transform.Translate(portVector);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        //GetComponent<Rigidbody2D>().angularVelocity = new Vector2(0f, 0f);
     }
 
     
