@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed, portDelay, portFactor;
     public static Vector2 portVector;
-    private Vector3 worldPos;
+    private Vector3 worldPos; 
+    private Quaternion rotPlayer;
     public static Vector2 mousePos, playerPos, deltaPos;
 
     // Start is called before the first frame update
@@ -14,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
     {
         moveSpeed = 2f;
         //seconds between teleport
-        portDelay = 1f;
-        portFactor = 5f;
+        portDelay = 1.5f;
+        portFactor = 7f;
 
-    InvokeRepeating("Teleport", portDelay, portDelay);
+        rotPlayer.Set(0, 0, 0, 0);
+
+        InvokeRepeating("Teleport", portDelay, portDelay);
     }
 
     // Update is called once per frame
@@ -25,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //basic movement
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        
+        transform.rotation = rotPlayer;
 
         calcPortVector();
     }
