@@ -11,7 +11,7 @@ public class Scroll : MonoBehaviour
     void Start()
     {
         //scroll speed
-        moveSpeed = 6f;
+        moveSpeed = 4f;
     }
     
     void Update()

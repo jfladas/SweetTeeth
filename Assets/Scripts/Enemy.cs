@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("hit!!!");
             GameObject.Find("caries").GetComponent<Death>().Die();
         }
     }
