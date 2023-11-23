@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
-    public float deathY = -10f;
+    public float deathX;
+    public float deathY;
     public Vector3 startPosPlayer, startPosCam;
 
     void Start()
     {
+        deathX = GameObject.Find("Main Camera").transform.position.x - 18f;
+        deathY = -10f;
         startPosPlayer.Set(0, 0, 0);
         startPosCam.Set(0, 0, -10);
     }
