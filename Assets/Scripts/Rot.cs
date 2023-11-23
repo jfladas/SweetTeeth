@@ -8,7 +8,6 @@ public class Rot : MonoBehaviour
 
     public Sprite spriteW, spriteB;
     private SpriteRenderer sr;
-    private Collider player;
     private bool rotten;
     public static int rotCount;
 

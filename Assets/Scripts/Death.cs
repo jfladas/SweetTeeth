@@ -10,7 +10,6 @@ public class Death : MonoBehaviour
 
     void Start()
     {
-        deathX = GameObject.Find("Main Camera").transform.position.x - 18f;
         deathY = -10f;
         startPosPlayer.Set(0, 0, 0);
         startPosCam.Set(0, 0, -10);
@@ -18,13 +17,14 @@ public class Death : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < deathY)
+        deathX = GameObject.Find("Main Camera").transform.position.x - 18f;
+        if (transform.position.y < deathY || transform.position.x < deathX)
         {
             Die();
         }
     }
 
-    void Die()
+    public void Die()
     {
         transform.position = startPosPlayer;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
