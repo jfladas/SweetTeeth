@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
-
     public float deathY = -10f;
     public Vector3 startPosPlayer, startPosCam;
-    // Start is called before the first frame update
+
     void Start()
     {
         startPosPlayer.Set(0, 0, 0);
         startPosCam.Set(0, 0, -10);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < deathY){
-            transform.position = startPosPlayer;
-            GameObject.Find("Main Camera").transform.position = startPosCam;
+        if (transform.position.y < deathY)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        transform.position = startPosPlayer;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        GameObject.Find("Main Camera").transform.position = startPosCam;
+
+        //unrot
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Tooth");
+        foreach (GameObject go in gos)
+        {
+            go.GetComponent<Rot>().Unrot();
         }
     }
 }

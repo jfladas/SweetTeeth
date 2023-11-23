@@ -6,10 +6,14 @@ public class Scroll : MonoBehaviour
 {
     //private Vector3 moveVector = new Vector3.left;
 
-    //scroll speed
-    public float moveSpeed = 2f;
+    public float moveSpeed;
 
-    // Update is called once per frame
+    void Start()
+    {
+        //scroll speed
+        moveSpeed = 6f;
+    }
+    
     void Update()
     {
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
