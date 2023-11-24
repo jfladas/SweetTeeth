@@ -10,14 +10,14 @@ public class Death : MonoBehaviour
 
     void Start()
     {
-        deathY = -10f;
+        deathY = -20f;
         startPosPlayer.Set(0, 0, 0);
         startPosCam.Set(0, 0, -10);
     }
 
     void Update()
     {
-        deathX = GameObject.Find("Main Camera").transform.position.x - 18f;
+        deathX = GameObject.Find("Main Camera").transform.position.x - 36f;
         if (transform.position.y < deathY || transform.position.x < deathX)
         {
             Die();
@@ -30,12 +30,21 @@ public class Death : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         GameObject.Find("Main Camera").transform.position = startPosCam;
 
-        //unrot
+        //unrot teeth
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Tooth");
         foreach (GameObject go in gos)
         {
-            go.GetComponent<Rot>().Unrot();
+            go.GetComponent<Rot>().UnrotTooth();
+        }
+
+        //unhide candy
+        gos = GameObject.FindGameObjectsWithTag("Candy");
+        foreach (GameObject go in gos)
+        {
+            //Debug.Log("unhide");
+            go.SetActive(true);
+            go.GetComponent<Candy>().UnhideCandy();
         }
     }
 }

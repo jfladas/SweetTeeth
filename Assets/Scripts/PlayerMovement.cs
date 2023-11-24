@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
         InvokeRepeating("Teleport", portDelay, portDelay);
 
-        SuperRot();
+        //SuperRot();
 
     }
 
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(portVector);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
     }
-
+/*
     void SuperRot(){
         // Specify the collider you want to check for overlaps
         Collider2D myCollider = GameObject.Find("radius").GetComponent<Collider2D>();
@@ -84,10 +84,11 @@ public class PlayerMovement : MonoBehaviour
 
                 if(overlappingObject.tag == "Tooth"){
                     // Do something with the overlapping object
-
+                    overlappingObject.GetComponent<Rot>().Rot();
                 }
             }
         }
     }
+*/
     
 }

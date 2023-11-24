@@ -22,12 +22,15 @@ public class Rot : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !rotten)
         {
-            sr.sprite = spriteB;
-            rotCount++;
-            rotten = true;
+            RotTooth();
         }
     }
-    public void Unrot(){
+    public void RotTooth(){
+        sr.sprite = spriteB;
+        rotCount++;
+        rotten = true;
+    }
+    public void UnrotTooth(){
         sr.sprite = spriteW;
         rotCount = 0;
         rotten = false;
