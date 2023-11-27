@@ -10,9 +10,9 @@ public class Death : MonoBehaviour
 
     void Start()
     {
-        deathY = -20f;
         startPosPlayer.Set(0, 0, 0);
-        startPosCam.Set(0, 0, -10);
+        startPosCam.Set(0, -5, -10);
+        deathY = -25f;
     }
 
     void Update()
