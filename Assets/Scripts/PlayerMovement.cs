@@ -11,10 +11,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        moveSpeed = 5f;
+        moveSpeed = 7f;
 
         //seconds between teleport
-        portDelay = 1.5f;
+        portDelay = 1.8f;
 
         //radius
         portFactor = 8f;
