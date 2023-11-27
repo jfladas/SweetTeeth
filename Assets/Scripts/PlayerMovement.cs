@@ -11,13 +11,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        moveSpeed = 6f;
+        moveSpeed = 5f;
 
         //seconds between teleport
         portDelay = 1.5f;
 
         //radius
-        portFactor = 8f;
+        portFactor = 10f;
         GameObject.Find("radius").transform.localScale = new Vector2(1,1) * portFactor * 2 / 3;
 
         rotPlayer.Set(0, 0, 0, 0);
