@@ -6,13 +6,15 @@ public class Death : MonoBehaviour
 {
     public float deathX;
     public float deathY;
+    public int startX;
     public Vector3 startPosPlayer, startPosCam;
 
     void Start()
     {
-        startPosPlayer.Set(0, 0, 0);
-        startPosCam.Set(0, -5, -10);
-        deathY = -25f;
+        startX = 0;
+        startPosPlayer.Set(startX, 0, 0);
+        startPosCam.Set(startX, -5, -10);
+        deathY = startPosCam.y - 21f;
     }
 
     void Update()

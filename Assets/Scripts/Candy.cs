@@ -19,7 +19,7 @@ public class Candy : MonoBehaviour
         candyCount = 0;
         hidden = false;
         candyText = GameObject.Find("CandyCount").GetComponent<TMP_Text>();
-        candyText.text = "Candy: " + candyCount;
+        candyText.text = "Candy: " + candyCount + "/4";
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -32,14 +32,14 @@ public class Candy : MonoBehaviour
     {
         sr.enabled = false;
         candyCount++;
-        candyText.text = "Candy: " + candyCount;
+        candyText.text = "Candy: " + candyCount + "/4";
         hidden = true;
     }
     public void UnhideCandy()
     {
         sr.enabled = true;
         candyCount = 0;
-        candyText.text = "Candy: " + candyCount;
+        candyText.text = "Candy: " + candyCount + "/4";
         hidden = false;
     }
 }
