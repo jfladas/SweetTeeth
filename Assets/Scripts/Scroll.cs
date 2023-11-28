@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Scroll : MonoBehaviour
 {
+    //private Vector3 moveVector = new Vector3.left;
 
     public float moveSpeed;
 
@@ -15,9 +16,6 @@ public class Scroll : MonoBehaviour
     
     void Update()
     {
-        if(Play.started)
-        {
-            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-        }
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
 }

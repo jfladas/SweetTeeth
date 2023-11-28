@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Tooth
   - Candy
-  - Cursor
-  - Brush
   layers:
   - Default
   - TransparentFX
