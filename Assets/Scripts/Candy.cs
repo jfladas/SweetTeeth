@@ -10,9 +10,11 @@ public class Candy : MonoBehaviour
     private bool hidden;
     public static int candyCount;
     TMP_Text candyText;
+    public float superTimer;
 
     void Start()
     {
+        superTimer = 5f;
         sr = gameObject.GetComponent<SpriteRenderer>();
         sr.enabled = true;
 
@@ -26,6 +28,9 @@ public class Candy : MonoBehaviour
         if (collider.gameObject.CompareTag("Player") && !hidden)
         {
             HideCandy();
+            if(candyCount > 4){
+                SuperRot();
+            }
         }
     }
     public void HideCandy()
@@ -41,5 +46,12 @@ public class Candy : MonoBehaviour
         candyCount = 0;
         candyText.text = "Candy: " + candyCount + "/4";
         hidden = false;
+    }
+    public void SuperRot(){
+        float sec = 0;
+        if (sec <= superTimer){
+            sec += 1 * Time.deltaTime;
+            Debug.Log(sec);
+        }
     }
 }
