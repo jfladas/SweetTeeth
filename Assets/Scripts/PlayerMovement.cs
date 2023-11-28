@@ -8,9 +8,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 worldPos;
     public float moveSpeed, portDelay, portFactor;
     private Quaternion rotPlayer;
+    public static bool init;
 
     void Start()
     {
+        init = false;
+
         moveSpeed = 5f;
 
         //seconds between teleport
@@ -21,20 +24,23 @@ public class PlayerMovement : MonoBehaviour
         GameObject.Find("radius").transform.localScale = new Vector2(1,1) * portFactor * 2 / 3;
 
         rotPlayer.Set(0, 0, 0, 0);
-
-        InvokeRepeating("Teleport", portDelay, portDelay);
-
-        //SuperRot();
-
     }
 
     void Update()
     {
-        //basic movement
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-        transform.rotation = rotPlayer;
-
         calcVectors();
+        //basic movement
+        if (Play.started)
+        {
+            if(!init){
+                init = true;
+                InvokeRepeating("Teleport", portDelay, portDelay);
+            }
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+            transform.rotation = rotPlayer;
+        } else {
+            CancelInvoke();
+        }
     }
 
     public void calcVectors(){
@@ -50,10 +56,19 @@ public class PlayerMovement : MonoBehaviour
         //vector player -> circle (direction mouse)
     }
 
+    void Init()
+    {
+        InvokeRepeating("Teleport", portDelay, portDelay);
+    }
     void Teleport()
     {
         transform.Translate(portVector);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+    }
+    public static void Reset()
+    {
+        init = false;
+        //CancelInvoke();
     }
 /*
     void SuperRot(){

@@ -48,10 +48,6 @@ public class Candy : MonoBehaviour
         hidden = false;
     }
     public void SuperRot(){
-        float sec = 0;
-        if (sec <= superTimer){
-            sec += 1 * Time.deltaTime;
-            Debug.Log(sec);
-        }
+        //...
     }
 }

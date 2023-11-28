@@ -16,6 +16,9 @@ public class Scroll : MonoBehaviour
     
     void Update()
     {
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        if(Play.started)
+        {
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        }
     }
 }

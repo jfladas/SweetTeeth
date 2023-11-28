@@ -48,5 +48,9 @@ public class Death : MonoBehaviour
             go.SetActive(true);
             go.GetComponent<Candy>().UnhideCandy();
         }
+
+        Play.started = false;
+        PlayerMovement.init = false;
+        //PlayerMovement.Reset();
     }
 }
