@@ -56,17 +56,10 @@ public class Candy : MonoBehaviour
     }
     IEnumerator SuperRot(){
         super = true;
-        //Wait for seconds
-        yield return new WaitForSeconds(superTime);
-        candyCount--;
-        yield return new WaitForSeconds(superTime);
-        candyCount--;
-        yield return new WaitForSeconds(superTime);
-        candyCount--;
-        yield return new WaitForSeconds(superTime);
-        candyCount--;
-        yield return new WaitForSeconds(superTime);
-        candyCount--;
+        while(candyCount>0){
+            yield return new WaitForSeconds(superTime);
+            candyCount--;
+        }
         super = false;
     }
 }
