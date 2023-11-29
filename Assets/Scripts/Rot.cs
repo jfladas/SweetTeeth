@@ -20,15 +20,19 @@ public class Rot : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !rotten)
+        if (collision.gameObject.CompareTag("Player"))
         {
             RotTooth();
         }
     }
+    
     public void RotTooth(){
-        sr.sprite = spriteB;
-        rotCount++;
-        rotten = true;
+        if(!rotten)
+        {
+            sr.sprite = spriteB;
+            rotCount++;
+            rotten = true;
+        }
     }
     public void UnrotTooth(){
         sr.sprite = spriteW;

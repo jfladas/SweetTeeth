@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
 public class Candy : MonoBehaviour
 {
@@ -10,18 +11,23 @@ public class Candy : MonoBehaviour
     private bool hidden;
     public static int candyCount;
     TMP_Text candyText;
-    public float superTimer;
+    public float superTime;
+    public static bool super;
 
     void Start()
     {
-        superTimer = 5f;
+        super = false;
+        superTime = 2f;
         sr = gameObject.GetComponent<SpriteRenderer>();
         sr.enabled = true;
 
         candyCount = 0;
         hidden = false;
         candyText = GameObject.Find("CandyCount").GetComponent<TMP_Text>();
-        candyText.text = "Candy: " + candyCount + "/4";
+    }
+    private void Update() {
+
+        candyText.text = "Candy: " + candyCount + "/5";
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -29,25 +35,38 @@ public class Candy : MonoBehaviour
         {
             HideCandy();
             if(candyCount > 4){
-                SuperRot();
+                Time.timeScale = 1.0f;
+                StartCoroutine(SuperRot());
             }
         }
     }
     public void HideCandy()
     {
         sr.enabled = false;
-        candyCount++;
-        candyText.text = "Candy: " + candyCount + "/4";
+        if(candyCount < 5){
+            candyCount++;
+        }
         hidden = true;
     }
     public void UnhideCandy()
     {
         sr.enabled = true;
         candyCount = 0;
-        candyText.text = "Candy: " + candyCount + "/4";
         hidden = false;
     }
-    public void SuperRot(){
-        //...
+    IEnumerator SuperRot(){
+        super = true;
+        //Wait for seconds
+        yield return new WaitForSeconds(superTime);
+        candyCount--;
+        yield return new WaitForSeconds(superTime);
+        candyCount--;
+        yield return new WaitForSeconds(superTime);
+        candyCount--;
+        yield return new WaitForSeconds(superTime);
+        candyCount--;
+        yield return new WaitForSeconds(superTime);
+        candyCount--;
+        super = false;
     }
 }

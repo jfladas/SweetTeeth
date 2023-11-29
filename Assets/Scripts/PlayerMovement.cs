@@ -14,20 +14,21 @@ public class PlayerMovement : MonoBehaviour
     {
         init = false;
 
-        moveSpeed = 5f;
+        moveSpeed = 5f/1.25f;
 
         //seconds between teleport
-        portDelay = 1.5f;
+        portDelay = 1.5f*1.25f;
 
         //radius
         portFactor = 10f;
-        GameObject.Find("radius").transform.localScale = new Vector2(1,1) * portFactor * 2 / 3;
+        GameObject.Find("radius").transform.localScale = new Vector2(1,1) * portFactor * 2;
 
         rotPlayer.Set(0, 0, 0, 0);
     }
 
     void Update()
     {
+        transform.rotation = rotPlayer;
         calcVectors();
         //basic movement
         if (Play.started)
@@ -37,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
                 InvokeRepeating("Teleport", portDelay, portDelay);
             }
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-            transform.rotation = rotPlayer;
         } else {
             CancelInvoke();
         }
