@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Screen.SetResolution(1080, 1920, true);
+        Screen.SetResolution(1920, 1080, true);
 
 
         init = false;
