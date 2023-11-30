@@ -29,6 +29,7 @@ public class Rot : MonoBehaviour
     public void RotTooth(){
         if(!rotten)
         {
+            gameObject.GetComponent<AudioSource>().Play();
             sr.sprite = spriteB;
             rotCount++;
             rotten = true;

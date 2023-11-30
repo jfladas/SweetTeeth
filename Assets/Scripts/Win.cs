@@ -35,6 +35,7 @@ public class Win : MonoBehaviour
     }
 
     void WinGame(){
+        gameObject.GetComponent<AudioSource>().Play();
         Play.started = false;
         win = true;
         Play.Init();

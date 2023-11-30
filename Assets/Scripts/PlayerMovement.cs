@@ -38,13 +38,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!init){
                 init = true;
-                gameObject.GetComponent<AudioSource>().Play();
+                //gameObject.GetComponent<AudioSource>().Play();
                 InvokeRepeating("Teleport", portDelay, portDelay);
             }
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
         } else
         {
-            gameObject.GetComponent<AudioSource>().Play();
+            gameObject.GetComponent<AudioSource>().Stop();
             CancelInvoke();
         }
     }
