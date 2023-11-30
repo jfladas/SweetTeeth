@@ -35,7 +35,6 @@ public class Death : MonoBehaviour
         //unrot teeth
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Tooth");
-        Rot.rotCount = 0;
         foreach (GameObject go in gos)
         {
             go.GetComponent<Rot>().UnrotTooth();

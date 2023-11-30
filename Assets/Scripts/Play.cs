@@ -40,6 +40,7 @@ public class Play : MonoBehaviour
     public void LoadGame()
     {
         started = true;
+        Rot.rotCount = 0;
     }
     public void LoadGameOver()
     {
