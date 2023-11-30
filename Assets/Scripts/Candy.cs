@@ -10,7 +10,6 @@ public class Candy : MonoBehaviour
     private SpriteRenderer sr;
     private bool hidden;
     public static int candyCount;
-    TMP_Text candyText;
     public float superTime;
     public static bool super;
 
@@ -23,11 +22,6 @@ public class Candy : MonoBehaviour
 
         candyCount = 0;
         hidden = false;
-        candyText = GameObject.Find("CandyCount").GetComponent<TMP_Text>();
-    }
-    private void Update() {
-
-        candyText.text = "Candy: " + candyCount + "/5";
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
