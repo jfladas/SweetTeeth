@@ -36,7 +36,6 @@ public class Rot : MonoBehaviour
     }
     public void UnrotTooth(){
         sr.sprite = spriteW;
-        rotCount = 0;
         rotten = false;
     }
 }

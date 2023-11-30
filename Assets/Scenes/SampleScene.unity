@@ -6478,6 +6478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3516c17307a3d45ad1eab77f2bb7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalCol: {r: 1, g: 1, b: 1, a: 0.039215688}
+  superCol: {r: 0.7490198, g: 0.6471531, b: 0.2576628, a: 0.078431375}
 --- !u!4 &1290404815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1837446133459176618, guid: 34038ddc486ac0143b03bd884a20a262, type: 3}

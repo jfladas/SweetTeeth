@@ -58,7 +58,8 @@ public class CandyCount : MonoBehaviour
                 i.sprite = countSuper5;
                 break;
             default:
-                Debug.Log("Error!!!!");
+                Debug.Log("Error!!!! " + Candy.candyCount);
+                Candy.candyCount = 0;
                 break;
         }
     }
