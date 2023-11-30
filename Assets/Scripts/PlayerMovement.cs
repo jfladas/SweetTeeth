@@ -12,12 +12,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Screen.SetResolution(1080, 1920, true);
+
+
         init = false;
 
-        moveSpeed = 5f/1.25f;
+        moveSpeed = 5f;
 
         //seconds between teleport
-        portDelay = 1.5f*1.25f;
+        portDelay = 1.5f;
 
         //radius
         portFactor = 10f;
@@ -35,10 +38,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!init){
                 init = true;
+                gameObject.GetComponent<AudioSource>().Play();
                 InvokeRepeating("Teleport", portDelay, portDelay);
             }
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-        } else {
+        } else
+        {
+            gameObject.GetComponent<AudioSource>().Play();
             CancelInvoke();
         }
     }
@@ -64,46 +70,11 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.Translate(portVector);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+
+        gameObject.GetComponent<AudioSource>().Play();
     }
     public static void Reset()
     {
         init = false;
-        //CancelInvoke();
     }
-/*
-    void SuperRot(){
-        // Specify the collider you want to check for overlaps
-        Collider2D myCollider = GameObject.Find("radius").GetComponent<Collider2D>();
-
-        // Check if the collider is not null
-        if (myCollider != null)
-        {
-            // Create an array to store overlapping colliders
-            Collider2D[] colliders = new Collider2D[20]; // You can adjust the size as needed
-
-            // Set up a contact filter to control which layers should be considered
-            ContactFilter2D contactFilter = new ContactFilter2D();
-            contactFilter.SetLayerMask(LayerMask.GetMask("Default")); // Set your desired layer(s)
-
-            // Check for overlaps and store the results in the colliders array
-            int colliderCount = myCollider.OverlapCollider(contactFilter, colliders);
-
-            // Process the overlapping colliders
-            for (int i = 0; i < colliderCount; i++)
-            {
-                // Access each overlapping collider
-                Collider2D overlappingCollider = colliders[i];
-
-                // Access the GameObject associated with the collider
-                GameObject overlappingObject = overlappingCollider.gameObject;
-
-                if(overlappingObject.tag == "Tooth"){
-                    // Do something with the overlapping object
-                    overlappingObject.GetComponent<Rot>().Rot();
-                }
-            }
-        }
-    }
-*/
-    
 }

@@ -11,7 +11,7 @@ public class SuperRot : MonoBehaviour
         superCol = new Color(250 / 255f, 216 / 255f, 86 / 255f, 50 / 255f);
     }
     private void Update() {
-        if(Candy.super){
+        if(Candy.super && Play.started){
             gameObject.GetComponent<SpriteRenderer>().color = superCol;
         }else{
             gameObject.GetComponent<SpriteRenderer>().color = normalCol;

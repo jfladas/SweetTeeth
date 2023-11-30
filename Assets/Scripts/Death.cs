@@ -7,7 +7,7 @@ public class Death : MonoBehaviour
     public float deathX;
     public float deathY;
     public int startX;
-    public Vector3 startPosPlayer, startPosCam;
+    public static Vector3 startPosPlayer, startPosCam;
 
     void Start()
     {
@@ -32,25 +32,6 @@ public class Death : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         GameObject.Find("Main Camera").transform.position = startPosCam;
 
-        //unrot teeth
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Tooth");
-        foreach (GameObject go in gos)
-        {
-            go.GetComponent<Rot>().UnrotTooth();
-        }
-
-        //unhide candy
-        gos = GameObject.FindGameObjectsWithTag("Candy");
-        foreach (GameObject go in gos)
-        {
-            //Debug.Log("unhide");
-            go.SetActive(true);
-            go.GetComponent<Candy>().UnhideCandy();
-        }
-
-        Play.started = false;
-        PlayerMovement.init = false;
-        //PlayerMovement.Reset();
+        Play.Init();
     }
 }
