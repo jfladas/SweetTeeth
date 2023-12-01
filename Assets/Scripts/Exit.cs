@@ -31,7 +31,7 @@ public class Exit : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             if (isHovering)
             {
-                transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
+                transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                 timeLeft -= Time.deltaTime;
                 if (timeLeft <= 0)
                 {
@@ -40,7 +40,7 @@ public class Exit : MonoBehaviour
             }
             else
             {
-                transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             }
         }else{
             gameObject.GetComponent<SpriteRenderer>().enabled = false;

@@ -11,7 +11,7 @@ public class Play : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Cursor") && !isHovering && !started)
+        if (collider.gameObject.CompareTag("Cursor") && !isHovering && !started && !Death.dead)
         {
             gameObject.GetComponent<AudioSource>().Play();
             timeLeft = timeToWait;
@@ -20,7 +20,7 @@ public class Play : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D collider) {
-        if (collider.gameObject.CompareTag("Cursor") && !started)
+        if (collider.gameObject.CompareTag("Cursor") && !started && !Death.dead)
         {
             gameObject.GetComponent<AudioSource>().Stop();
             isHovering = false;

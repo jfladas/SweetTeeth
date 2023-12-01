@@ -36,6 +36,7 @@ public class Replay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0)
             {
+                Death.dead = false;
                 isHovering = false;
                 GameObject.Find("caries").transform.position = Death.startPosPlayer;
                 GameObject.Find("caries").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
