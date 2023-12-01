@@ -9,24 +9,29 @@ public class Brush : MonoBehaviour
     void Start()
     {
         up = true;
-        moveSpeed = 12f;
+        moveSpeed = 8f;
     }
 
     void Update()
     {
-        if(transform.position.y > -6f)
+        if (Play.started)
         {
-            up = false;
-        }
-        if (transform.position.y < -9f)
-        {
-            up = true;
-        }
-        if (up)
-        {
-            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
-        }else{
-            transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+            if (transform.position.y > -6f)
+            {
+                up = false;
+            }
+            if (transform.position.y < -9f)
+            {
+                up = true;
+            }
+            if (up)
+            {
+                transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+            }
         }
     }
 }

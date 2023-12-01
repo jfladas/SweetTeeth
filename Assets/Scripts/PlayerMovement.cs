@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion rotPlayer;
     public static bool init;
 
+    public AudioSource audio;
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
@@ -38,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!init){
                 init = true;
-                //gameObject.GetComponent<AudioSource>().Play();
                 InvokeRepeating("Teleport", portDelay, portDelay);
             }
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(portVector);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
-        gameObject.GetComponent<AudioSource>().Play();
+        audio.Play();
     }
     public static void Reset()
     {

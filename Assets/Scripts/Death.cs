@@ -9,6 +9,8 @@ public class Death : MonoBehaviour
     public int startX;
     public static Vector3 startPosPlayer, startPosCam;
 
+    public AudioSource audio;
+
     void Start()
     {
         startX = 0;
@@ -33,5 +35,6 @@ public class Death : MonoBehaviour
         GameObject.Find("Main Camera").transform.position = startPosCam;
 
         Play.Init();
+        audio.Play();
     }
 }
